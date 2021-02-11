@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,7 +69,18 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://localhost:8000'
+BASEURL = 'https://decide-egc-examen.herokuapp.com'
+APIS = {
+    		'authentication': 'https://decide-egc-examen.herokuapp.com', 
+    		'base': 'https://decide-egc-examen.herokuapp.com',
+    		'booth': 'https://decide-egc-examen.herokuapp.com',
+    		'census': 'https://decide-egc-examen.herokuapp.com',
+    		'mixnet': 'https://decide-egc-examen.herokuapp.com',
+   		    'postproc': 'https://decide-egc-examen.herokuapp.com',
+    		'store': 'https://decide-egc-examen.herokuapp.com',
+    		'visualizer': 'https://decide-egc-examen.herokuapp.com',
+    		'voting': 'https://decide-egc-examen.herokuapp.com',
+		}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -156,7 +168,9 @@ KEYBITS = 256
 try:
     from local_settings import *
 except ImportError:
-    print("local_settings.py not found")
+    #print("local_settings.py not found")
+    pass
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
+django_heroku.settings(locals())
