@@ -19,4 +19,3 @@ script:
 - ./manage.py makemigrations
 - ./manage.py migrate
 - coverage run --branch --source=. ./manage.py test --keepdb
-#HOLA
